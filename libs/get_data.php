@@ -1,6 +1,6 @@
 <?php header("Content-Type: application/json; encoding:utf-8");
 require_once "helper.inc.php";
-$json = json_encode(get_cbe_data()['data']);
+$json = get_cbe_data();
 if($json===false){
   $json = json_encode(array("JSON_ERROR",json_last_error_msg()));
   if($json===false){

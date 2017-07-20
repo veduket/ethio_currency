@@ -25,19 +25,19 @@ function get_contents_curl($url,$timeout=120, $retries=10) {
     return $result;
 }
 function get_cbe_data(){
+  $state="FAILED_TO_LOAD_HTML";
+  $html=array();
+  $html['state']=$state;
+  $html['data']=array();
+  $currencies_required=array("USD","GBP","EUR","CAD","JPY","AUD","AED","CNY");
+  $url = "http://www.combanketh.et/More/CurrencyRate.aspx";
+  $rate_date_selector="span.date";
+  $rates_table_selector="table:nth-of-type(2)";
+  $result = get_contents_curl($url);
+  $result=preg_replace("/CN\¥/s", "CNY", $result);
+  preg_match('/<span id="dnn_dnnCURRENTDATE_lblDate" class="date">(.*?)<\/span>/s',$result['data'],$r_date);
+  $rate_date = strtotime(preg_replace(array("/<span(.*?)>/s","/<\/span>/s"),array("",""),$r_date[0]));
   if($result['state']=="SUCCESS"){
-    $state="FAILED_TO_LOAD_HTML";
-    $html=array();
-    $html['state']=$state;
-    $html['data']=array();
-    $currencies_required=array("USD","GBP","EUR","CAD","JPY","AUD","AED","CNY");
-    $url = "http://www.combanketh.et/More/CurrencyRate.aspx";
-    $rate_date_selector="span.date";
-    $rates_table_selector="table:nth-of-type(2)";
-    $result = get_contents_curl($url);
-    $result=preg_replace("/CN\¥/s", "CNY", $result);
-    preg_match('/<span id="dnn_dnnCURRENTDATE_lblDate" class="date">(.*?)<\/span>/s',$result['data'],$r_date);
-    $rate_date = strtotime(preg_replace(array("/<span(.*?)>/s","/<\/span>/s"),array("",""),$r_date[0]));
     $patterns=array();
     $replacements=array();
     $patterns[0]="/<span(.*?)>/s";
@@ -107,11 +107,11 @@ function get_cbe_data(){
     }
     $currency_data=array('rate_date'=>$rate_date,'headers'=>$tbl_head,'detail'=>$formatted_data);
     $html['data']=$currency_data;
-    return $html;
+    return json_encode($html);
   }else{
     $html['state']=$html['state'].", ".$state;
   }
-  return $html;
+  return json_encode($html);
 }
 function get_nbe_data(){
   $url = "http://www.nbe.gov.et/xml/rss.php";
