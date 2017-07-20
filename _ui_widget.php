@@ -4,15 +4,15 @@
 .flag {display: inline-block;  width: 32px; height: 32px; background: url(<?php echo plugin_dir_url(__FILE__)."assets/flags/flags.png"; ?>) no-repeat; }
 .flag.flag-et {background-position: 0 -128px;}
 tr,th,td {vertical-align: middle !important;text-align: center !important;}
-#etbuna_widget *{ font-size:8pt !important;}
-#etbuna_widget table{margin:0;}
-#etbuna_widget .panel-body{padding:0 !important;}
-#etbuna_widget .well{margin:0px !important;}
-#etbuna_widget .form-control{height:auto;}
-#etbuna_widget select,input{border-radius: 5px;line-height: 20px;border-style:none;border:1px solid black;}
+#ecw_widget *{ font-size:8pt !important;}
+#ecw_widget table{margin:0;}
+#ecw_widget .panel-body{padding:0 !important;}
+#ecw_widget .well{margin:0px !important;}
+#ecw_widget .form-control{height:auto;}
+#ecw_widget select,input{border-radius: 5px;line-height: 20px;border-style:none;border:1px solid black;}
 </style>
 
-<div class="container-fluid clearfix" id="etbuna_widget" style="width:250px !important;overflow:hidden;">
+<div class="container-fluid clearfix" id="ecw_widget" style="width:250px !important;overflow:hidden;">
   <div class="panel-group" id="currency_widget" >
     <div class="panel panel-success" id="widget_currency_table">
       <div class="panel-heading">
