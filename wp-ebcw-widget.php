@@ -1,6 +1,6 @@
 <?php
   /*
-  Plugin Name: ET Buna Currency Widget
+  Plugin Name: Ethio Currency Widget
   Plugin URI: https://github.com:veduket/ethio_currency.git
   Description: Get daily exchange rates for ETB and calculate currency conversion and price per pound calculation at your finger tips
   Version: 1.1
